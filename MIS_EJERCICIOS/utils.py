@@ -37,11 +37,12 @@ def añadir_eliminar (lista, comando,elemento=None):
 
 
 def dict_string(string_1):
-    p = list(string_1)
-    u= dict(enumerate(p))
-    dicc_al_reves= dict(zip(u.values(),u.keys()))
-    return dicc_al_reves
-    
+    lista_vacia = []
+    for i in string_1.lower():
+        lista_vacia.append(i)
+        lista_vacia.append (contador_letras(string_1,i))
+    resultado = dict(zip(lista_vacia[::2],lista_vacia[1::2]))
+    return resultado
 
 
 def contador_letras(frase, letra):
@@ -64,11 +65,14 @@ def comparacion (numero_1,numero_2):
 
 def piramide(numero_filas):
     for i in range(numero_filas,0,-1):
-        print(*list(range(i,0,-1)))
+         print(*list(range(i,0,-1)))
+    return print(*list(range(i,0,-1)))
 
 
 def dias_semana(numero):
     semana = ["Lunes","Martes", "Miercoles","Jueves","Viernes","Sabado","Domingo"]
+    if numero> 7:
+        resultado = print("error, el numero debe estar entre el 1 y el 7")
     for i in range(1,8):
         if i == numero:
             resultado = semana [i -1]
