@@ -66,3 +66,30 @@ def pedir_tamaño():
         except:
              print("Los números deben ser enteros. Prueba a introducirlos otra vez sin decimales")
 
+def elegir_posicion(tablero):
+    while True:
+        try:
+            colocar_barcos_random(tablero)
+            print(tablero)
+            mensaje= input("¿Te gusta como están colocados tus barcos?, recuerda que no pueden superponerse, si es asi escribe `no´")
+            if mensaje.lower() == "no":
+                limpiar_tablero(tablero)
+                print("Ahora recolocamos tus barcos")
+                continue
+            elif mensaje.lower() == "si":
+                print("La colocación de tus barcos es:")
+                print (tablero)
+                return tablero
+            else:
+                print("respuesta no valida. Responde Si o No")
+        except Exception as e:
+            print ("ha habido un error, vuelve a generar tus barcos")
+
+
+def limpiar_tablero(tablero):
+    for i in range(len(tablero)):
+        for x in range(len(tablero[i])):
+            if tablero [i][x] == "O":
+                tablero[i][x]= "_"
+    return tablero
+
