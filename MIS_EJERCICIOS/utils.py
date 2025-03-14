@@ -48,7 +48,7 @@ def colocar_barcos_random(tablero):
     lista_barcos=crear_lista_barcos()
     for barco in lista_barcos:
         colocar_barco(barco,tablero)
-    return print (tablero)
+    return(tablero)
 
 def pedir_tamaño():
     while True:
