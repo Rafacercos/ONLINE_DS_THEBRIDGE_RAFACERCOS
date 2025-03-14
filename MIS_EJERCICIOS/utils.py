@@ -49,3 +49,20 @@ def colocar_barcos_random(tablero):
     for barco in lista_barcos:
         colocar_barco(barco,tablero)
     return print (tablero)
+
+def pedir_tamaño():
+    while True:
+        try:
+            filas = int(input("Introduce el numero de filas que deseas para tu tablero (Debe ser un número exacto)"))
+            columnas = int(input("Introduce el número de columnas que deseas para tu tablero. (Recuerda que debe ser igual al numero de filas)"))
+            tamaño = ((filas),(columnas))
+            if filas <= 0 or columnas <= 0:
+                print("El número no puede ser 0 o menor, vuelve a introducir los valores")
+                continue
+            if filas != columnas:
+                print("Las filas y columnas deben ser el mismo número. Prueba a introducir los valores otra vez")
+                continue
+            return tamaño
+        except:
+             print("Los números deben ser enteros. Prueba a introducirlos otra vez sin decimales")
+
