@@ -93,3 +93,49 @@ def limpiar_tablero(tablero):
                 tablero[i][x]= "_"
     return tablero
 
+def pedir_datos_barco():
+    while True:
+        try:
+            fila = int(input("Introduce un numero del 0 al 10"))
+            columna = int(input("Introduce un número del 0 al 10"))
+            eslora = int(input("Selecciona tu eslora entre 2 ,3 y 4"))
+            orientacion = input("Introduce una orientacion entre horizontal/vertical")
+            lista_barco = [eslora,fila,columna,orientacion]
+            if fila <= 0 or columna <= 0:
+                print("El número no puede ser 0 o menor, vuelve a introducir los valores")
+                continue
+            if eslora != 2 and eslora != 3 and eslora != 4 :
+                print("La eslora debe ser un valor entre 2 y 4 (Ambos incluidos)")
+                continue
+            if orientacion.lower() != "horizontal" and orientacion.lower() != "vertical":
+                print("La orientacion solo puede ser horizontal o vertical. Introduce una de las dos palabras")
+                continue
+            return lista_barco
+        except:
+             print("Ha ocurrido un error, vuelve a introducir los valores")
+
+def ajustar_posicion_inicial(lista_barco):
+    posicion_inicial = (lista_barco[1],lista_barco[2])
+    if lista_barco [3].lower()== "horizontal" and lista_barco[2] >= 6:
+        posicion_inicial = (lista_barco[1], lista_barco[2] - lista_barco[0])
+        return posicion_inicial
+    elif lista_barco [3].lower() == "vertical" and lista_barco[0]>= 6:
+        posicion_inicial = (lista_barco[1] - lista_barco[0], lista_barco[2])
+        return posicion_inicial
+    else:
+        posicion_inicial = (lista_barco[1],lista_barco[2])
+        return posicion_inicial
+    
+def crear_barco(lista_barco):
+    posicion_inicial= ajustar_posicion_inicial(lista_barco)
+    if lista_barco[0] not in [2,3,4]:
+        return "Error la eslora debe ser 2, 3 o 4"
+    barco =[posicion_inicial]
+    for i in range(1,lista_barco[0]):
+        if lista_barco[3].lower()== "horizontal":
+            barco.append((barco[0][0],barco [0][1]+ i))
+        elif lista_barco[3].lower() == "vertical":
+            barco.append((barco[0][0] + i,barco[0][1]))
+        else:
+            print("Ha habido un error")
+    return barco
