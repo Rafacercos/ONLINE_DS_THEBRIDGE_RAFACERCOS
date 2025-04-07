@@ -73,3 +73,13 @@ inner join customers on employees.EmployeeId = customers.SupportRepId
 inner join invoices on customers.CustomerId = invoices.CustomerId
 inner join invoice_items on invoices.InvoiceId = invoice_items.InvoiceId
 group by 1;
+--Ejercicio 8 Parte 2 
+select employees.FirstName|| ' '|| employees.Lastname as fullname,
+count(invoices.Total)
+from employees
+inner join customers on customers.SupportRepId = employees.EmployeeId
+inner join invoices on customers.CustomerId = invoices.CustomerId
+inner join invoice_items on invoice_items.InvoiceId=invoices.InvoiceId
+where invoices.InvoiceDate like '2009%'
+group by 1
+order by 2 desc;
