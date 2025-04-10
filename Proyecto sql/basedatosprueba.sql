@@ -283,7 +283,7 @@ VALUES
 
 
 -- Insertar datos en tabla proyecto
-INSERT INTO proyecto(Nombreproyecto)
+INSERT INTO proyecto(nombre_proyecto)
 VALUES 
 ('Proyecto_HLF'),
 ('Proyecto_EDA'),
@@ -299,7 +299,7 @@ VALUES
 
 
 -- Insertar datos en tabla calificacion
-INSERT INTO calificacion(nota,id_alumno,id_proyecto,)
+INSERT INTO calificaciones(nota,id_alumno,id_proyecto)
 VALUES 
 ('Apto',1, 1),
 ('No apto',1, 2),
